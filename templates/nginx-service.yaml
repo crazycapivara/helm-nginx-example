@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ .Values.service.prefix }}{{ .Chart.Name }}
+  labels:
+    app: nginx
+spec:
+  selector:
+    app: nginx
+  ports:
+  - port: 80
+    protocol: TCP
+    #targetPort: 80
+    nodePort: 30091
+  #type: ClusterIP
+  type: NodePort
